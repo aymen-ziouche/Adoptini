@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "704018466082",
+    "project_id": "adoptini-a15ed",
+    "storage_bucket": "adoptini-a15ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704018466082:android:de05a853b1bd1fa742d17b",
+        "android_client_info": {
+          "package_name": "com.example.adoptini"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704018466082-1v3sevil8abbte28k9g931nl4uekkr1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtMoTS4eZE5MY7F0_20HQ8Y6gwpWjhQ_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704018466082-1v3sevil8abbte28k9g931nl4uekkr1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

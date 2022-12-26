@@ -1,0 +1,66 @@
+import 'package:adoptini/screens/homepage.dart';
+import 'package:adoptini/screens/onBoarding.dart';
+import 'package:adoptini/screens/signinpage.dart';
+import 'package:adoptini/screens/signuppage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+      theme: ThemeData(
+          inputDecorationTheme: InputDecorationTheme(
+        labelStyle: Theme.of(context).textTheme.subtitle1,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.0),
+          borderSide: const BorderSide(
+            color: Color(0xff827397),
+          ),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.0),
+          borderSide: const BorderSide(
+            color: Color(0xff827397),
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.0),
+          borderSide: const BorderSide(
+            color: Color(0xff827397),
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.0),
+          borderSide: const BorderSide(
+            color: Colors.red,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16.0),
+          borderSide: const BorderSide(
+            color: Colors.red,
+          ),
+        ),
+      )),
+      initialRoute: OnBoarding.id,
+      routes: {
+        HomePage.id: (context) =>  HomePage(),
+        OnBoarding.id: (context) => const OnBoarding(),
+        SigninPage.id: (context) => const SigninPage(),
+        SignupPage.id: (context) => SignupPage(),
+      },
+    );
+  }
+}

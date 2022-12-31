@@ -1,12 +1,13 @@
 import 'dart:io';
 
-import 'package:adoptini/modules/user.dart';
 import 'package:adoptini/screens/homepage.dart';
 import 'package:adoptini/screens/signinpage.dart';
 import 'package:adoptini/services/auth.dart';
 import 'package:adoptini/widgets/mainbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:geolocator/geolocator.dart';
+
 
 class SignupPage extends StatefulWidget {
   SignupPage({Key? key}) : super(key: key);

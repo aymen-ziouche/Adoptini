@@ -1,3 +1,4 @@
+import 'package:adoptini/screens/addpetpage.dart';
 import 'package:adoptini/screens/homepage.dart';
 import 'package:adoptini/screens/onBoarding.dart';
 import 'package:adoptini/screens/signinpage.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         OnBoarding.id: (context) => const OnBoarding(),
         SigninPage.id: (context) => const SigninPage(),
         SignupPage.id: (context) => SignupPage(),
+        AddPetPage.id: (context) => const AddPetPage(),
       },
     );
   }

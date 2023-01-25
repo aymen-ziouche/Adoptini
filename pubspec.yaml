@@ -41,6 +41,7 @@ dependencies:
   firebase_storage: ^11.0.9
   animated_bottom_navigation_bar: ^1.1.0
   geolocator: ^9.0.2
+  font_awesome_flutter: ^10.3.0
 
 dev_dependencies:
   flutter_test:

@@ -44,7 +44,12 @@ class Auth {
     return authResult;
   }
 
-  Future<void> signOut() async {
-    await _auth.signOut();
-  }
+    @override
+  Stream<User?> authStateChanges() => _auth.authStateChanges();
+
+  @override
+  User? get currentUser => _auth.currentUser;
+
+  @override
+  Future<void> logout() async => await _auth.signOut();
 }

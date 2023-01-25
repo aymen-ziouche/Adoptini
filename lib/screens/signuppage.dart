@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:geolocator/geolocator.dart';
 
-
 class SignupPage extends StatefulWidget {
   SignupPage({Key? key}) : super(key: key);
   static String id = "SignupPage";
@@ -38,9 +37,17 @@ class _SignupPageState extends State<SignupPage> {
             child: Container(
               height: 200,
               width: 200,
-              decoration: const BoxDecoration(
-                color: Color(0xff827397),
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    const Color(0xff827397),
+                    Theme.of(context).primaryColor,
+                  ],
+                ),
+                color: Theme.of(context).primaryColor,
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(200),
                 ),
               ),
@@ -65,7 +72,7 @@ class _SignupPageState extends State<SignupPage> {
                         "Register",
                         style: Theme.of(context).textTheme.headline4!.copyWith(
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff827397),
+                              color: Theme.of(context).primaryColor,
                             ),
                       ),
                       const SizedBox(height: 70.0),
@@ -86,10 +93,10 @@ class _SignupPageState extends State<SignupPage> {
                               print('No image selected.');
                             }
                           },
-                          child: const CircleAvatar(
-                            backgroundColor: Color(0xff827397),
+                          child: CircleAvatar(
+                            backgroundColor: Theme.of(context).primaryColor,
                             radius: 70,
-                            child: Icon(
+                            child: const Icon(
                               Icons.person,
                               color: Colors.white,
                               size: 70,
@@ -97,7 +104,7 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 34.0),
+                      const SizedBox(height: 34.0),
                       TextFormField(
                         controller: _nameController,
                         focusNode: _nameFocusNode,
@@ -201,7 +208,8 @@ class _SignupPageState extends State<SignupPage> {
                                 _nameController.text,
                                 _image,
                               );
-                              Navigator.pushNamed(context, HomePage.id);
+                              Navigator.pushReplacementNamed(
+                                  context, HomePage.id);
                               print(authresult.user!.uid);
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(

@@ -14,23 +14,43 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: double.infinity,
       height: 50,
-      child: ElevatedButton(
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        borderRadius: hasCircularBorder ? BorderRadius.circular(20) : null,
+      ),
+      child: FlatButton(
         onPressed: onTap,
-        style: ElevatedButton.styleFrom(
-          primary: Color(0xff827397),
-          shape: hasCircularBorder
-              ? RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24.0),
-                )
-              : null,
-        ),
         child: Text(
           text,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
+    // SizedBox(
+    //   width: double.infinity,
+    //   height: 50,
+    //   child:
+
+    //   // ElevatedButton(
+    //   //   onPressed: onTap,
+    //   //   style: ElevatedButton.styleFrom(
+    //   //     primary: Color(0xffFFD700),
+    //   //     shape: hasCircularBorder
+    //   //         ? RoundedRectangleBorder(
+    //   //             borderRadius: BorderRadius.circular(24.0),
+    //   //           )
+    //   //         : null,
+    //   //   ),
+    //   //   child: Text(
+    //   //     text,
+    //   //   ),
+    //   // ),
+    // );
   }
 }

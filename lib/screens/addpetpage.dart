@@ -85,6 +85,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 20.0),
                 TextFormField(
                   controller: _petName,
                   textInputAction: TextInputAction.next,
@@ -107,6 +108,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10.0),
                 TextFormField(
                   controller: _petDescription,
                   textInputAction: TextInputAction.next,
@@ -130,6 +132,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10.0),
                 TextFormField(
                   controller: _petBreed,
                   textInputAction: TextInputAction.next,
@@ -152,6 +155,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10.0),
                 TextFormField(
                   controller: _petAge,
                   keyboardType: TextInputType.number,
@@ -175,6 +179,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10.0),
                 DropdownButton(
                   value: _petGender,
                   icon: const Icon(Icons.keyboard_arrow_down),
@@ -190,6 +195,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     });
                   },
                 ),
+                SizedBox(height: 10.0),
                 DropdownButton(
                   value: _petSize,
                   icon: const Icon(Icons.keyboard_arrow_down),
@@ -222,7 +228,7 @@ class _AddPetPageState extends State<AddPetPage> {
                           petSize: _petSize,
                           petImage: _petImage,
                         );
-                        Navigator.pushNamed(context, HomePage.id);
+                        Navigator.pop(context);
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

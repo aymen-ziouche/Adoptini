@@ -30,8 +30,16 @@ class _SigninPageState extends State<SigninPage> {
             child: Container(
               height: 200,
               width: 200,
-              decoration: const BoxDecoration(
-                color: Color(0xff827397),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color(0xff827397),
+                    Theme.of(context).primaryColor,
+                  ],
+                ),
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(200),
                 ),
@@ -57,7 +65,7 @@ class _SigninPageState extends State<SigninPage> {
                         "Login",
                         style: Theme.of(context).textTheme.headline4!.copyWith(
                               fontWeight: FontWeight.bold,
-                              color: Color(0xff827397),
+                              color: Theme.of(context).primaryColor,
                             ),
                       ),
                       const SizedBox(height: 90.0),
@@ -145,7 +153,8 @@ class _SigninPageState extends State<SigninPage> {
                               final authresult = await _auth.signIn(
                                   _emailController.text,
                                   _passwordController.text);
-                              Navigator.pushNamed(context, HomePage.id);
+                              Navigator.pushReplacementNamed(
+                                  context, HomePage.id);
                               print(authresult.user!.uid);
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(

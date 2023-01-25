@@ -1,6 +1,7 @@
 import 'package:adoptini/screens/addpetpage.dart';
 import 'package:adoptini/screens/homepage.dart';
 import 'package:adoptini/screens/onBoarding.dart';
+import 'package:adoptini/screens/profilepage.dart';
 import 'package:adoptini/screens/signinpage.dart';
 import 'package:adoptini/screens/signuppage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,46 +23,48 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: HomePage(),
       theme: ThemeData(
+          primaryColor: Colors.indigo,
           inputDecorationTheme: InputDecorationTheme(
-        labelStyle: Theme.of(context).textTheme.subtitle1,
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          borderSide: const BorderSide(
-            color: Color(0xff827397),
-          ),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          borderSide: const BorderSide(
-            color: Color(0xff827397),
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          borderSide: const BorderSide(
-            color: Color(0xff827397),
-          ),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          borderSide: const BorderSide(
-            color: Colors.red,
-          ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          borderSide: const BorderSide(
-            color: Colors.red,
-          ),
-        ),
-      )),
+            labelStyle: Theme.of(context).textTheme.subtitle1,
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              borderSide: const BorderSide(
+                color: Color(0xff827397),
+              ),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              borderSide: const BorderSide(
+                color: Color(0xff827397),
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              borderSide: const BorderSide(
+                color: Color(0xff827397),
+              ),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              borderSide: const BorderSide(
+                color: Colors.red,
+              ),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16.0),
+              borderSide: const BorderSide(
+                color: Colors.red,
+              ),
+            ),
+          )),
       initialRoute: OnBoarding.id,
       routes: {
-        HomePage.id: (context) =>  HomePage(),
+        HomePage.id: (context) => HomePage(),
         OnBoarding.id: (context) => const OnBoarding(),
         SigninPage.id: (context) => const SigninPage(),
         SignupPage.id: (context) => SignupPage(),
         AddPetPage.id: (context) => const AddPetPage(),
+        ProfilePage.id: (context) => ProfilePage(),
       },
     );
   }

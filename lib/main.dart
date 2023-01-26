@@ -1,5 +1,6 @@
 import 'package:adoptini/screens/addpetpage.dart';
 import 'package:adoptini/screens/homepage.dart';
+import 'package:adoptini/screens/mapscreen.dart';
 import 'package:adoptini/screens/onBoarding.dart';
 import 'package:adoptini/screens/profilepage.dart';
 import 'package:adoptini/screens/signinpage.dart';
@@ -59,12 +60,13 @@ class MyApp extends StatelessWidget {
           )),
       initialRoute: OnBoarding.id,
       routes: {
-        HomePage.id: (context) => HomePage(),
+        HomePage.id: (context) => const HomePage(),
         OnBoarding.id: (context) => const OnBoarding(),
         SigninPage.id: (context) => const SigninPage(),
         SignupPage.id: (context) => SignupPage(),
         AddPetPage.id: (context) => const AddPetPage(),
         ProfilePage.id: (context) => ProfilePage(),
+        MapScreen.id:(context) => const MapScreen(),
       },
     );
   }

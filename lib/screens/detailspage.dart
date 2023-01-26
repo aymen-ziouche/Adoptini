@@ -31,9 +31,22 @@ class _DetailsPageState extends State<DetailsPage> {
               Stack(
                 alignment: Alignment.center,
                 children: <Widget>[
+                  SizedBox(
+                    height: screenHeight * 0.5,
+                    child: Hero(
+                      tag: widget.pet.name,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(25),
+                        child: Image(
+                          image: NetworkImage(widget.pet.image),
+                          fit: BoxFit.fitHeight,
+                        ),
+                      ),
+                    ),
+                  ),
                   Container(
                     height: screenHeight * 0.5,
-                    color: Colors.blue.withOpacity(0.1),
+                    color: Colors.blue.withOpacity(0.0),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20.0, vertical: 60.0),
@@ -57,19 +70,6 @@ class _DetailsPageState extends State<DetailsPage> {
                             ],
                           ),
                         ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: screenHeight * 0.35,
-                    child: Hero(
-                      tag: widget.pet.name,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(25),
-                        child: Image(
-                          image: NetworkImage(widget.pet.image),
-                          fit: BoxFit.fitHeight,
-                        ),
                       ),
                     ),
                   ),

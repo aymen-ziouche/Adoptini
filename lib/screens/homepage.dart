@@ -1,6 +1,7 @@
 import 'package:adoptini/modules/pet.dart';
 import 'package:adoptini/screens/addpetpage.dart';
 import 'package:adoptini/screens/detailspage.dart';
+import 'package:adoptini/screens/mapscreen.dart';
 import 'package:adoptini/screens/profilepage.dart';
 import 'package:adoptini/screens/signinpage.dart';
 import 'package:adoptini/screens/signuppage.dart';
@@ -306,7 +307,7 @@ class _HomePageState extends State<HomePage> {
             case 0:
               break;
             case 1:
-              Navigator.pushNamed(context, SigninPage.id);
+              Navigator.pushNamed(context, MapScreen.id);
               break;
             case 2:
               Navigator.pushNamed(context, SignupPage.id);

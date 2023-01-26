@@ -4,6 +4,10 @@
         android:label="adoptini"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyBHBCkTZlvulHaGrVpSTtS_LstDQJ7n6iM"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

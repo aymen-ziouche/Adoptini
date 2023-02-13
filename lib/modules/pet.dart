@@ -5,6 +5,7 @@ class Pet {
   final String breed;
   final String age;
   final String gender;
+  final String type;
   final String image;
   final String description;
   final String ownerId;
@@ -18,6 +19,7 @@ class Pet {
     required this.breed,
     required this.age,
     required this.gender,
+    required this.type,
     required this.image,
     required this.description,
     required this.ownerId,

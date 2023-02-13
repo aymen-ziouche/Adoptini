@@ -17,6 +17,7 @@ class Database {
     required String petGender,
     required String petAge,
     required String petSize,
+    required String petType,
     required String petDescription,
     required File petImage,
   }) async {
@@ -42,6 +43,7 @@ class Database {
       'petGender': petGender,
       'petAge': petAge,
       'petSize': petSize,
+      'petType': petType,
       'petDescription': petDescription,
       'petImage': downloadUrl,
       'longitude': longitude,

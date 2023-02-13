@@ -42,6 +42,16 @@ class _AddPetPageState extends State<AddPetPage> {
     'Large',
   ];
 
+  String _petType = 'Dog';
+
+  // List of items in our dropdown menu
+  var types = [
+    'Dog',
+    'Cat',
+    'Bird',
+    'Other',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +85,7 @@ class _AddPetPageState extends State<AddPetPage> {
                       }
                     },
                     child: const CircleAvatar(
-                      backgroundColor: Color(0xff827397),
+                      backgroundColor: Colors.indigo,
                       radius: 70,
                       child: Icon(
                         Icons.pets,
@@ -179,55 +189,98 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
-                DropdownButton(
-                  value: _petGender,
-                  icon: const Icon(Icons.keyboard_arrow_down),
-                  items: genders.map((String items) {
-                    return DropdownMenuItem(
-                      value: items,
-                      child: Text(items),
-                    );
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      _petGender = newValue!;
-                    });
-                  },
-                ),
-                SizedBox(height: 10.0),
-                DropdownButton(
-                  value: _petSize,
-                  icon: const Icon(Icons.keyboard_arrow_down),
-                  items: sizes.map((String items) {
-                    return DropdownMenuItem(
-                      value: items,
-                      child: Text(items),
-                    );
-                  }).toList(),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      _petSize = newValue!;
-                    });
-                  },
+                SizedBox(height: 12.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        const Text(
+                          "Gender",
+                          style: TextStyle(fontSize: 18, color: Colors.black54),
+                        ),
+                        DropdownButton(
+                          value: _petGender,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: genders.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _petGender = newValue!;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        const Text(
+                          'Size',
+                          style: TextStyle(fontSize: 18, color: Colors.black54),
+                        ),
+                        DropdownButton(
+                          value: _petSize,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: sizes.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _petSize = newValue!;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        const Text(
+                          'Type',
+                          style: TextStyle(fontSize: 18, color: Colors.black54),
+                        ),
+                        DropdownButton(
+                          value: _petType,
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          items: types.map((String items) {
+                            return DropdownMenuItem(
+                              value: items,
+                              child: Text(items),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _petType = newValue!;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 20.0),
                 MainButton(
-                  text: "Register",
+                  text: "Add pet",
                   hasCircularBorder: true,
                   onTap: () async {
                     if (_globalKey.currentState!.validate()) {
                       _globalKey.currentState!.save();
                       try {
                         final uploadresult = await _db.savePetInfo(
-                          petName: _petName.text,
-                          petDescription: _petDescription.text,
-                          petBreed: _petBreed.text,
-                          petAge: _petAge.text,
-                          petGender: _petGender,
-                          petSize: _petSize,
-                          petImage: _petImage,
-                        );
+                            petName: _petName.text,
+                            petDescription: _petDescription.text,
+                            petBreed: _petBreed.text,
+                            petAge: _petAge.text,
+                            petGender: _petGender,
+                            petSize: _petSize,
+                            petImage: _petImage,
+                            petType: _petType);
                         Navigator.pop(context);
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(

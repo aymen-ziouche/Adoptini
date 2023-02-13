@@ -56,6 +56,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                             name: data['petName'],
                             breed: data['petBreed'],
                             gender: data['petGender'],
+                            type: data['petType'],
                             age: data['petAge'],
                             description: data['petDescription'],
                             image: data['petImage'],

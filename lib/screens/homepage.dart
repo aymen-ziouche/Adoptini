@@ -231,6 +231,7 @@ class _HomePageState extends State<HomePage> {
                                       name: data['petName'],
                                       breed: data['petBreed'],
                                       gender: data['petGender'],
+                                      type: data['petType'],
                                       age: data['petAge'],
                                       description: data['petDescription'],
                                       image: data['petImage'],

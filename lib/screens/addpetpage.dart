@@ -109,7 +109,7 @@ class _AddPetPageState extends State<AddPetPage> {
                       val!.isEmpty ? 'Please enter the pet\'s name!' : null,
                   decoration: const InputDecoration(
                     labelText: 'Name',
-                    hintText: 'Enter hte pet\'s name!',
+                    hintText: 'Enter the pet\'s name!',
                     hintStyle: TextStyle(
                       color: Colors.black54,
                     ),
@@ -133,7 +133,7 @@ class _AddPetPageState extends State<AddPetPage> {
                       : null,
                   decoration: const InputDecoration(
                     labelText: 'Description',
-                    hintText: 'Enter hte pet\'s description!',
+                    hintText: 'Enter the pet\'s description!',
                     hintStyle: TextStyle(
                       color: Colors.black54,
                     ),
@@ -156,7 +156,7 @@ class _AddPetPageState extends State<AddPetPage> {
                       val!.isEmpty ? 'Please enter the pet\'s breed!' : null,
                   decoration: const InputDecoration(
                     labelText: 'Breed',
-                    hintText: 'Enter hte pet\'s breed!',
+                    hintText: 'Enter the pet\'s breed!',
                     hintStyle: TextStyle(
                       color: Colors.black54,
                     ),
@@ -180,7 +180,7 @@ class _AddPetPageState extends State<AddPetPage> {
                       val!.isEmpty ? 'Please enter the pet\'s age!' : null,
                   decoration: const InputDecoration(
                     labelText: 'Age',
-                    hintText: 'Enter hte pet\'s age!',
+                    hintText: 'Enter the pet\'s age!',
                     hintStyle: TextStyle(
                       color: Colors.black54,
                     ),

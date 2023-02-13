@@ -1,10 +1,9 @@
 import 'package:adoptini/modules/pet.dart';
 import 'package:adoptini/screens/addpetpage.dart';
 import 'package:adoptini/screens/detailspage.dart';
+import 'package:adoptini/screens/favoritespage.dart';
 import 'package:adoptini/screens/mapscreen.dart';
 import 'package:adoptini/screens/profilepage.dart';
-import 'package:adoptini/screens/signinpage.dart';
-import 'package:adoptini/screens/signuppage.dart';
 import 'package:adoptini/services/firestore.dart';
 import 'package:adoptini/widgets/listItemWidget.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
@@ -215,62 +214,68 @@ class _HomePageState extends State<HomePage> {
                               return buildAnimalIcon(index);
                             }),
                       ),
-                      Expanded(
-                        child: StreamBuilder<QuerySnapshot>(
-                          stream: _db.loadPets(),
-                          builder: (context, snapshot) {
-                            List<Pet> pets = [];
-                            if (snapshot.hasData) {
-                              for (var doc in snapshot.data!.docs) {
-                                var data = doc;
-                                pets.add(
-                                  Pet(
-                                    ownerId: data['ownerId'],
-                                    name: data['petName'],
-                                    breed: data['petBreed'],
-                                    gender: data['petGender'],
-                                    age: data['petAge'],
-                                    description: data['petDescription'],
-                                    image: data['petImage'],
-                                    longitude: data['longitude'],
-                                    latitude: data['latitude'],
-                                  ),
-                                );
+                      MediaQuery.removePadding(
+                        context: context,
+                        removeTop: true,
+                        child: Expanded(
+                          child: StreamBuilder<QuerySnapshot>(
+                            stream: _db.loadPets(),
+                            builder: (context, snapshot) {
+                              List<Pet> pets = [];
+                              if (snapshot.hasData) {
+                                for (var doc in snapshot.data!.docs) {
+                                  var data = doc;
+                                  pets.add(
+                                    Pet(
+                                      ownerId: data['ownerId'],
+                                      name: data['petName'],
+                                      breed: data['petBreed'],
+                                      gender: data['petGender'],
+                                      age: data['petAge'],
+                                      description: data['petDescription'],
+                                      image: data['petImage'],
+                                      longitude: data['longitude'],
+                                      latitude: data['latitude'],
+                                      favorites: data["favorites"],
+                                      petId: data['petId'],
+                                    ),
+                                  );
+                                }
                               }
-                            }
-                            return ListView.builder(
-                              itemCount: pets.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                final pet = pets[index];
-                                return Padding(
-                                  padding: const EdgeInsets.only(
-                                    bottom: 10.0,
-                                    right: 20.0,
-                                    left: 20.0,
-                                  ),
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => DetailsPage(
-                                            pet: pet,
+                              return ListView.builder(
+                                itemCount: pets.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  final pet = pets[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.only(
+                                      bottom: 10.0,
+                                      right: 20.0,
+                                      left: 20.0,
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => DetailsPage(
+                                              pet: pet,
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    },
-                                    child: ListItem(
-                                        imageUrl: pet.image,
-                                        name: pet.name,
-                                        breed: pet.breed,
-                                        gender: pet.gender,
-                                        age: pet.age,
-                                        description: pet.description),
-                                  ),
-                                );
-                              },
-                            );
-                          },
+                                        );
+                                      },
+                                      child: ListItem(
+                                          imageUrl: pet.image,
+                                          name: pet.name,
+                                          breed: pet.breed,
+                                          gender: pet.gender,
+                                          age: pet.age,
+                                          description: pet.description),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],
@@ -310,7 +315,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.pushNamed(context, MapScreen.id);
               break;
             case 2:
-              Navigator.pushNamed(context, SignupPage.id);
+              Navigator.pushNamed(context, FavoritesPage.id);
               break;
             case 3:
               Navigator.pushNamed(context, ProfilePage.id);

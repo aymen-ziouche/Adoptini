@@ -1,4 +1,6 @@
 class Pet {
+  List<dynamic> favorites;
+  final String petId;
   final String name;
   final String breed;
   final String age;
@@ -10,6 +12,8 @@ class Pet {
   final double longitude;
 
   Pet({
+    required this.favorites,
+    required this.petId,
     required this.name,
     required this.breed,
     required this.age,

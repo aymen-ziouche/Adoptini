@@ -1,4 +1,5 @@
 import 'package:adoptini/screens/addpetpage.dart';
+import 'package:adoptini/screens/favoritespage.dart';
 import 'package:adoptini/screens/homepage.dart';
 import 'package:adoptini/screens/mapscreen.dart';
 import 'package:adoptini/screens/onBoarding.dart';
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
         AddPetPage.id: (context) => const AddPetPage(),
         ProfilePage.id: (context) => ProfilePage(),
         MapScreen.id:(context) => const MapScreen(),
+        FavoritesPage.id: (context) => FavoritesPage(),
       },
     );
   }

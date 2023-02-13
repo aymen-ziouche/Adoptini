@@ -15,3 +15,9 @@ class User {
     this.longitude = '',
   });
 }
+
+ // TODO: here's the accounts
+
+
+// aymen.zch23@gmail.com ===> test1234
+// test@test.com ===> test1234

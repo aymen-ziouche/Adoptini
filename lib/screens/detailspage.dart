@@ -1,4 +1,7 @@
 import 'package:adoptini/modules/pet.dart';
+import 'package:adoptini/services/firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,6 +22,7 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
+    final _db = Database();
     final male = widget.pet.gender == 'Male' ? true : false;
 
     final screenHeight = MediaQuery.of(context).size.height;
@@ -107,7 +111,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Text(
-                                      'Maya Berkovskaya',
+                                      'john doe',
                                       style: TextStyle(
                                         color: Theme.of(context).primaryColor,
                                         fontSize: 16.0,
@@ -115,8 +119,8 @@ class _DetailsPageState extends State<DetailsPage> {
                                       ),
                                     ),
                                     const Text(
-                                      'May 25, 2019',
-                                      style: const TextStyle(
+                                      'Feb 3, 2023',
+                                      style: TextStyle(
                                         color: Colors.grey,
                                         fontWeight: FontWeight.w600,
                                       ),
@@ -167,15 +171,21 @@ class _DetailsPageState extends State<DetailsPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Material(
-                        borderRadius: BorderRadius.circular(20.0),
-                        elevation: 4.0,
-                        color: Theme.of(context).primaryColor,
-                        child: const Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Icon(
-                            FontAwesomeIcons.heart,
-                            color: Colors.white,
+                      InkWell(
+                        onTap: (() async {
+                          await _db.addFavorites(widget.pet.petId);
+                          print("added to favorites");
+                        }),
+                        child: Material(
+                          borderRadius: BorderRadius.circular(20.0),
+                          elevation: 4.0,
+                          color: Theme.of(context).primaryColor,
+                          child: const Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Icon(
+                              FontAwesomeIcons.heart,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),

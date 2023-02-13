@@ -104,34 +104,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 ),
               ),
             ),
-
-            // TODO: I GOT NO IDEA WHAT I"M DOING HERE.
-            // FutureBuilder(
-            //   future: _db.loadFavorites(),
-            //   builder: (context, snapshot) {
-            //     List<Pet> pets = [];
-            // if (snapshot!= null) {
-            //               for (var doc in snapshot) {
-            //                 var data = doc;
-            //                 pets.add(
-            //                   Pet(
-            //                     petId: data["petId"],
-            //                     ownerId: data['ownerId'],
-            //                     name: data['petName'],
-            //                     breed: data['petBreed'],
-            //                     gender: data['petGender'],
-            //                     age: data['petAge'],
-            //                     description: data['petDescription'],
-            //                     image: data['petImage'],
-            //                     longitude: data['longitude'],
-            //                     latitude: data['latitude'],
-            //                   ),
-            //                 );
-            //               }
-            //             }
-            // return Container();
-            // },
-            // ),
           ],
         ),
       ),

@@ -71,17 +71,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<String> animalTypes = [
-    'Cats',
     'Dogs',
-    'Parrots',
-    'Fish',
+    'Cats',
+    'birds',
+    'other',
   ];
 
   List<IconData> animalIcons = [
-    FontAwesomeIcons.cat,
     FontAwesomeIcons.dog,
+    FontAwesomeIcons.cat,
     FontAwesomeIcons.crow,
-    FontAwesomeIcons.fish,
+    FontAwesomeIcons.paw,
   ];
   @override
   Widget build(BuildContext context) {

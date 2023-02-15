@@ -299,14 +299,14 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
-        backgroundColor: Colors.black38,
+        backgroundColor: Colors.white,
         activeColor: Colors.indigo,
-        inactiveColor: Colors.white,
+        inactiveColor: Colors.black38,
         height: 60,
         icons: iconList,
         activeIndex: _bottomNavIndex,
         gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.softEdge,
+        notchSmoothness: NotchSmoothness.softEdge,   
         // TODO: fix routing for this section
         onTap: (value) {
           switch (value) {

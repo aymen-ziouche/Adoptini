@@ -1,6 +1,7 @@
 import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/screens/detailspage.dart';
 import 'package:adoptini/widgets/listItemWidget.dart';
+import 'package:adoptini/widgets/shimmerWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,9 +53,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 child: Consumer<PetsProvider>(
                   builder: (context, provider, child) {
                     if (provider.pets.isEmpty) {
-                      return const Center(child: CircularProgressIndicator());
+                      return const Center(child: ShimmerWidget());
                     }
-
                     return ListView.builder(
                       itemCount: provider.pets.length,
                       itemBuilder: (BuildContext context, int index) {

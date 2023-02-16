@@ -260,7 +260,7 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 } else {
                                   return const Center(
-                                      child: Text("No pet here"));
+                                      child: Text("No pets here"));
                                 }
                               }
                               return const Text('No Data');

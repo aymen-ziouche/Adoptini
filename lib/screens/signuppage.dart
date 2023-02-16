@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:adoptini/screens/homepage.dart';
+import 'package:adoptini/screens/mainPage.dart';
 import 'package:adoptini/screens/signinpage.dart';
 import 'package:adoptini/services/auth.dart';
 import 'package:adoptini/widgets/mainbutton.dart';
@@ -209,7 +210,7 @@ class _SignupPageState extends State<SignupPage> {
                                 _image,
                               );
                               Navigator.pushReplacementNamed(
-                                  context, HomePage.id);
+                                  context, MainPage.id);
                               print(authresult.user!.uid);
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(

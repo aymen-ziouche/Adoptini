@@ -5,6 +5,7 @@ class Pet {
   final String breed;
   final String age;
   final String gender;
+  final String size;
   final String type;
   final String image;
   final String description;
@@ -13,6 +14,7 @@ class Pet {
   final double longitude;
 
   Pet({
+    required this.size,
     required this.favorites,
     required this.petId,
     required this.name,

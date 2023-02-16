@@ -1,15 +1,16 @@
-import 'package:adoptini/modules/pet.dart';
+import 'package:adoptini/providers/petProvider.dart';
+import 'package:adoptini/providers/userProvider.dart';
 import 'package:adoptini/screens/addpetpage.dart';
 import 'package:adoptini/screens/detailspage.dart';
 import 'package:adoptini/screens/favoritespage.dart';
 import 'package:adoptini/screens/mapscreen.dart';
 import 'package:adoptini/screens/profilepage.dart';
-import 'package:adoptini/services/firestore.dart';
+import 'package:adoptini/widgets/ListViewWidget.dart';
 import 'package:adoptini/widgets/listItemWidget.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -22,9 +23,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _db = Database();
+  @override
+  void initState() {
+    super.initState();
+    final userProvider = context.read<UserProvider>();
+    userProvider.fetchUser();
+    final petsProvider = context.read<PetsProvider>();
+    petsProvider.fetchPets();
+  }
 
   int selectedAnimalIconIndex = 0;
+
   Widget buildAnimalIcon(int index) {
     return Padding(
       padding: const EdgeInsets.only(right: 30.0),
@@ -73,8 +82,8 @@ class _HomePageState extends State<HomePage> {
   List<String> animalTypes = [
     'Dogs',
     'Cats',
-    'birds',
-    'other',
+    'Birds',
+    'Other',
   ];
 
   List<IconData> animalIcons = [
@@ -85,15 +94,6 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    var iconList = <IconData>[
-      FontAwesomeIcons.home,
-      FontAwesomeIcons.mapPin,
-      FontAwesomeIcons.solidHeart,
-      FontAwesomeIcons.solidUser,
-    ];
-
-    var _bottomNavIndex = 0;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -106,50 +106,59 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  const Icon(FontAwesomeIcons.bars),
-                  Column(
+              child: Consumer<UserProvider>(
+                builder: (context, provider, child) {
+                  if (provider.user == null) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(
-                        'Location',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.0,
-                          color: Colors.indigo.withOpacity(0.4),
-                        ),
-                      ),
-                      Row(
-                        children: const [
-                          Icon(
-                            FontAwesomeIcons.mapMarkerAlt,
-                            color: Colors.indigo,
-                          ),
+                      const Icon(FontAwesomeIcons.bars),
+                      Column(
+                        children: <Widget>[
                           Text(
-                            'Lyon, ',
+                            'Location',
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 22.0,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18.0,
+                              color: Colors.indigo.withOpacity(0.4),
                             ),
                           ),
-                          Text(
-                            'France',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w300,
-                              fontSize: 22.0,
-                            ),
+                          Row(
+                            children: [
+                              const Icon(
+                                FontAwesomeIcons.mapMarkerAlt,
+                                color: Colors.indigo,
+                              ),
+                              Text(
+                                "${provider.user!.city}, ",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22.0,
+                                ),
+                              ),
+                              Text(
+                                provider.user!.country,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 22.0,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
+                      CircleAvatar(
+                        radius: 20.0,
+                        backgroundImage: NetworkImage(
+                          provider.user!.profilePicture,
+                        ),
+                      ),
                     ],
-                  ),
-                  const CircleAvatar(
-                    radius: 20.0,
-                    backgroundColor: Colors.indigo,
-                  ),
-                ],
+                  );
+                },
               ),
             ),
             Expanded(
@@ -193,10 +202,6 @@ class _HomePageState extends State<HomePage> {
                                       hintText: 'Search pets to adopt'),
                                 ),
                               ),
-                              Icon(
-                                FontAwesomeIcons.filter,
-                                color: Colors.grey,
-                              ),
                             ],
                           ),
                         ),
@@ -218,63 +223,30 @@ class _HomePageState extends State<HomePage> {
                         context: context,
                         removeTop: true,
                         child: Expanded(
-                          child: StreamBuilder<QuerySnapshot>(
-                            stream: _db.loadPets(),
-                            builder: (context, snapshot) {
-                              List<Pet> pets = [];
-                              if (snapshot.hasData) {
-                                for (var doc in snapshot.data!.docs) {
-                                  var data = doc;
-                                  pets.add(
-                                    Pet(
-                                      ownerId: data['ownerId'],
-                                      name: data['petName'],
-                                      breed: data['petBreed'],
-                                      gender: data['petGender'],
-                                      type: data['petType'],
-                                      age: data['petAge'],
-                                      description: data['petDescription'],
-                                      image: data['petImage'],
-                                      longitude: data['longitude'],
-                                      latitude: data['latitude'],
-                                      favorites: data["favorites"],
-                                      petId: data['petId'],
-                                    ),
-                                  );
-                                }
+                          child: Consumer<PetsProvider>(
+                            builder: (context, provider, child) {
+                              if (provider.pets.isEmpty) {
+                                return const Center(
+                                    child: CircularProgressIndicator());
                               }
-                              return ListView.builder(
-                                itemCount: pets.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  final pet = pets[index];
-                                  return Padding(
-                                    padding: const EdgeInsets.only(
-                                      bottom: 10.0,
-                                      right: 20.0,
-                                      left: 20.0,
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => DetailsPage(
-                                              pet: pet,
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      child: ListItem(
-                                          imageUrl: pet.image,
-                                          name: pet.name,
-                                          breed: pet.breed,
-                                          gender: pet.gender,
-                                          age: pet.age,
-                                          description: pet.description),
-                                    ),
-                                  );
-                                },
-                              );
+                              if (selectedAnimalIconIndex == 0) {
+                                return ListViewWidget(
+                                  provider: provider.dogs,
+                                );
+                              } else if (selectedAnimalIconIndex == 1) {
+                                return ListViewWidget(
+                                  provider: provider.cats,
+                                );
+                              } else if (selectedAnimalIconIndex == 2) {
+                                return ListViewWidget(
+                                  provider: provider.birds,
+                                );
+                              } else if (selectedAnimalIconIndex == 3) {
+                                return ListViewWidget(
+                                  provider: provider.other,
+                                );
+                              }
+                              return const Text('No Data');
                             },
                           ),
                         ),
@@ -286,43 +258,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.indigo,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          Navigator.pushNamed(context, AddPetPage.id);
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        backgroundColor: Colors.white,
-        activeColor: Colors.indigo,
-        inactiveColor: Colors.black38,
-        height: 60,
-        icons: iconList,
-        activeIndex: _bottomNavIndex,
-        gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.softEdge,   
-        // TODO: fix routing for this section
-        onTap: (value) {
-          switch (value) {
-            case 0:
-              break;
-            case 1:
-              Navigator.pushNamed(context, MapScreen.id);
-              break;
-            case 2:
-              Navigator.pushNamed(context, FavoritesPage.id);
-              break;
-            case 3:
-              Navigator.pushNamed(context, ProfilePage.id);
-              break;
-          }
-        },
       ),
     );
   }

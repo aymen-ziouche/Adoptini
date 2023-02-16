@@ -55,6 +55,11 @@ class _AddPetPageState extends State<AddPetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: Colors.indigo,
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -67,13 +72,11 @@ class _AddPetPageState extends State<AddPetPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(height: 70.0),
+                const SizedBox(height: 20.0),
                 Center(
                   child: InkWell(
                     onTap: () async {
-                      //Add image picker
-
-                      final pickedFile = await ImagePicker().getImage(
+                      final pickedFile = await ImagePicker().pickImage(
                         source: ImageSource.gallery,
                       );
                       if (pickedFile != null) {
@@ -81,7 +84,13 @@ class _AddPetPageState extends State<AddPetPage> {
                           _petImage = File(pickedFile.path);
                         });
                       } else {
-                        print('No image selected.');
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              "No image selected",
+                            ),
+                          ),
+                        );
                       }
                     },
                     child: const CircleAvatar(

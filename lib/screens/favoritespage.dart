@@ -1,9 +1,8 @@
-import 'package:adoptini/modules/pet.dart';
+import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/screens/detailspage.dart';
-import 'package:adoptini/services/firestore.dart';
 import 'package:adoptini/widgets/listItemWidget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FavoritesPage extends StatefulWidget {
   FavoritesPage({Key? key}) : super(key: key);
@@ -15,12 +14,19 @@ class FavoritesPage extends StatefulWidget {
 
 class _FavoritesPageState extends State<FavoritesPage> {
   @override
+  void initState() {
+    super.initState();
+    final petsProvider = context.read<PetsProvider>();
+    petsProvider.fetchFavorites();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var _db = Database();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        foregroundColor: Colors.indigo,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -43,35 +49,16 @@ class _FavoritesPageState extends State<FavoritesPage> {
               context: context,
               removeTop: true,
               child: Expanded(
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: _db.loadFavorites(),
-                  builder: (context, snapshot) {
-                    List<Pet> pets = [];
-                    if (snapshot.hasData) {
-                      for (var doc in snapshot.data!.docs) {
-                        var data = doc;
-                        pets.add(
-                          Pet(
-                            ownerId: data['ownerId'],
-                            name: data['petName'],
-                            breed: data['petBreed'],
-                            gender: data['petGender'],
-                            type: data['petType'],
-                            age: data['petAge'],
-                            description: data['petDescription'],
-                            image: data['petImage'],
-                            longitude: data['longitude'],
-                            latitude: data['latitude'],
-                            favorites: data["favorites"],
-                            petId: data['petId'],
-                          ),
-                        );
-                      }
+                child: Consumer<PetsProvider>(
+                  builder: (context, provider, child) {
+                    if (provider.pets.isEmpty) {
+                      return const Center(child: CircularProgressIndicator());
                     }
+
                     return ListView.builder(
-                      itemCount: pets.length,
+                      itemCount: provider.pets.length,
                       itemBuilder: (BuildContext context, int index) {
-                        final pet = pets[index];
+                        final pet = provider.pets[index];
                         return Padding(
                           padding: const EdgeInsets.only(
                             bottom: 10.0,

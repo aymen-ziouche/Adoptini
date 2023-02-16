@@ -1,6 +1,9 @@
+import 'package:adoptini/providers/petProvider.dart';
+import 'package:adoptini/providers/userProvider.dart';
 import 'package:adoptini/screens/addpetpage.dart';
 import 'package:adoptini/screens/favoritespage.dart';
 import 'package:adoptini/screens/homepage.dart';
+import 'package:adoptini/screens/mainPage.dart';
 import 'package:adoptini/screens/mapscreen.dart';
 import 'package:adoptini/screens/onBoarding.dart';
 import 'package:adoptini/screens/profilepage.dart';
@@ -8,6 +11,7 @@ import 'package:adoptini/screens/signinpage.dart';
 import 'package:adoptini/screens/signuppage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: MainPage(),
       theme: ThemeData(
           primaryColor: Colors.indigo,
           inputDecorationTheme: InputDecorationTheme(
@@ -61,14 +65,24 @@ class MyApp extends StatelessWidget {
           )),
       initialRoute: OnBoarding.id,
       routes: {
+        MainPage.id: (context) => MultiProvider(
+              providers: [
+                ChangeNotifierProvider(
+                  create: (_) => UserProvider(),
+                ),
+                ChangeNotifierProvider(create: (_) => PetsProvider())
+              ],
+              child: const MainPage(),
+            ),
         HomePage.id: (context) => const HomePage(),
         OnBoarding.id: (context) => const OnBoarding(),
         SigninPage.id: (context) => const SigninPage(),
         SignupPage.id: (context) => SignupPage(),
         AddPetPage.id: (context) => const AddPetPage(),
         ProfilePage.id: (context) => ProfilePage(),
-        MapScreen.id:(context) => const MapScreen(),
-        FavoritesPage.id: (context) => FavoritesPage(),
+        MapScreen.id: (context) => const MapScreen(),
+        FavoritesPage.id: (context) => ChangeNotifierProvider(
+            create: (_) => PetsProvider(), child: FavoritesPage()),
       },
     );
   }

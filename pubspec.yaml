@@ -43,6 +43,8 @@ dependencies:
   geolocator: ^9.0.2
   font_awesome_flutter: ^10.3.0
   google_maps_flutter: ^2.1.5
+  provider: ^6.0.5
+  dio: ^5.0.0
 
 dev_dependencies:
   flutter_test:

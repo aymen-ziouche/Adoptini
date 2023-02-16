@@ -1,9 +1,9 @@
 import 'dart:io';
 
+import 'package:adoptini/modules/pet.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:geolocator/geolocator.dart';
 
 class Database {
@@ -52,8 +52,31 @@ class Database {
     });
   }
 
-  Stream<QuerySnapshot> loadPets() {
-    return FirebaseFirestore.instance.collection('pets').snapshots();
+  Future<List<Pet>> loadPets() async {
+    try {
+      final petsSnapshot =
+          await FirebaseFirestore.instance.collection('pets').get();
+      return petsSnapshot.docs
+          .map((doc) => Pet(
+                name: doc.get('petName'),
+                breed: doc.get('petBreed'),
+                age: doc.get('petAge'),
+                description: doc.get('petDescription'),
+                favorites: doc.get('favorites'),
+                gender: doc.get('petGender'),
+                size: doc.get('petSize'),
+                image: doc.get('petImage'),
+                latitude: doc.get('latitude'),
+                longitude: doc.get('longitude'),
+                ownerId: doc.get('ownerId'),
+                petId: doc.get('petId'),
+                type: doc.get('petType'),
+              ))
+          .toList();
+    } catch (e) {
+      print(e);
+      return [];
+    }
   }
 
   Future<void> addFavorites(String petId) async {
@@ -77,13 +100,32 @@ class Database {
     });
   }
 
-  // TODO: I need to get the the document id to use it here below
-
-  Stream<QuerySnapshot> loadFavorites() {
+  Future<List<Pet>> loadFavorites() async {
     final user = _auth.currentUser;
-    return FirebaseFirestore.instance
-        .collection('pets')
-        .where('favorites', arrayContains: user?.uid)
-        .snapshots();
+
+    try {
+      final petsSnapshot =
+          await FirebaseFirestore.instance.collection('pets').where("favorites", arrayContains:user?.uid).get();
+      return petsSnapshot.docs
+          .map((doc) => Pet(
+                name: doc.get('petName'),
+                breed: doc.get('petBreed'),
+                age: doc.get('petAge'),
+                description: doc.get('petDescription'),
+                favorites: doc.get('favorites'),
+                gender: doc.get('petGender'),
+                size: doc.get('petSize'),
+                image: doc.get('petImage'),
+                latitude: doc.get('latitude'),
+                longitude: doc.get('longitude'),
+                ownerId: doc.get('ownerId'),
+                petId: doc.get('petId'),
+                type: doc.get('petType'),
+              ))
+          .toList();
+    } catch (e) {
+      print(e);
+      return [];
+    }
   }
 }

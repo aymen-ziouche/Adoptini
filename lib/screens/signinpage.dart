@@ -1,4 +1,5 @@
 import 'package:adoptini/screens/homepage.dart';
+import 'package:adoptini/screens/mainPage.dart';
 import 'package:adoptini/services/auth.dart';
 import 'package:adoptini/widgets/mainbutton.dart';
 import 'package:flutter/material.dart';
@@ -154,7 +155,7 @@ class _SigninPageState extends State<SigninPage> {
                                   _emailController.text,
                                   _passwordController.text);
                               Navigator.pushReplacementNamed(
-                                  context, HomePage.id);
+                                  context, MainPage.id);
                               print(authresult.user!.uid);
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(

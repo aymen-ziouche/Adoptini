@@ -1,13 +1,7 @@
 import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/providers/userProvider.dart';
-import 'package:adoptini/screens/addpetpage.dart';
-import 'package:adoptini/screens/detailspage.dart';
-import 'package:adoptini/screens/favoritespage.dart';
-import 'package:adoptini/screens/mapscreen.dart';
-import 'package:adoptini/screens/profilepage.dart';
 import 'package:adoptini/widgets/ListViewWidget.dart';
-import 'package:adoptini/widgets/listItemWidget.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:adoptini/widgets/shimmerWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -109,7 +103,11 @@ class _HomePageState extends State<HomePage> {
               child: Consumer<UserProvider>(
                 builder: (context, provider, child) {
                   if (provider.user == null) {
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(
+                        child: CircularProgressIndicator(
+                      color: Colors.indigo,
+                      strokeWidth: 5,
+                    ));
                   }
                   return Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -226,25 +224,44 @@ class _HomePageState extends State<HomePage> {
                           child: Consumer<PetsProvider>(
                             builder: (context, provider, child) {
                               if (provider.pets.isEmpty) {
-                                return const Center(
-                                    child: CircularProgressIndicator());
+                                return const Center(child: ShimmerWidget());
                               }
                               if (selectedAnimalIconIndex == 0) {
-                                return ListViewWidget(
-                                  provider: provider.dogs,
-                                );
+                                if (provider.dogs.isNotEmpty) {
+                                  return ListViewWidget(
+                                    provider: provider.dogs,
+                                  );
+                                } else {
+                                  return const Center(
+                                      child: Text("No pets here"));
+                                }
                               } else if (selectedAnimalIconIndex == 1) {
-                                return ListViewWidget(
-                                  provider: provider.cats,
-                                );
+                                if (provider.cats.isNotEmpty) {
+                                  return ListViewWidget(
+                                    provider: provider.cats,
+                                  );
+                                } else {
+                                  return const Center(
+                                      child: Text("No pets here"));
+                                }
                               } else if (selectedAnimalIconIndex == 2) {
-                                return ListViewWidget(
-                                  provider: provider.birds,
-                                );
+                                if (provider.birds.isNotEmpty) {
+                                  return ListViewWidget(
+                                    provider: provider.birds,
+                                  );
+                                } else {
+                                  return const Center(
+                                      child: Text("No pets here"));
+                                }
                               } else if (selectedAnimalIconIndex == 3) {
-                                return ListViewWidget(
-                                  provider: provider.other,
-                                );
+                                if (provider.other.isNotEmpty) {
+                                  return ListViewWidget(
+                                    provider: provider.other,
+                                  );
+                                } else {
+                                  return const Center(
+                                      child: Text("No pet here"));
+                                }
                               }
                               return const Text('No Data');
                             },

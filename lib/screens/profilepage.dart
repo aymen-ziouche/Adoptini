@@ -1,3 +1,4 @@
+import 'package:adoptini/screens/onBoarding.dart';
 import 'package:adoptini/services/auth.dart';
 import 'package:adoptini/widgets/mainbutton.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +7,16 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
   static String id = "ProfilePage";
   final _auth = Auth();
-// TODO: FIX THIS SO IT POPS OUT OF ALL SCREENS WHEN THE USE CLICKS THE BUTTON
   @override
   Widget build(BuildContext context) {
     Future<void> _logout() async {
       try {
         await _auth.logout();
-        Navigator.pop(context);
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => OnBoarding()),
+          (Route<dynamic> route) => false,
+        );
       } catch (e) {
         debugPrint('logout error: $e');
       }

@@ -15,8 +15,8 @@ class OnBoarding extends StatelessWidget {
       finishButtonText: 'Get Started',
       // give style to the finish button
 
-      finishButtonColor: Color(0xff827397),
-      controllerColor: Color(0xff827397),
+      finishButtonColor: Colors.indigo,
+      controllerColor: Colors.indigo,
       onFinish: () {
         Navigator.pushReplacementNamed(context, SignupPage.id);
       },

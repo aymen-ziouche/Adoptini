@@ -70,8 +70,12 @@ class _FavoritesPageState extends State<FavoritesPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => DetailsPage(
-                                    pet: pet,
+                                  builder: (context) => ChangeNotifierProvider(
+                                    create: (_) => PetsProvider(),
+                                    child: DetailsPage(
+                                      // owner: context.read<PetsProvider>().fetchOwner(pet.ownerId),
+                                      pet: pet,
+                                    ),
                                   ),
                                 ),
                               );

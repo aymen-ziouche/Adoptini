@@ -1,10 +1,14 @@
 import 'package:adoptini/modules/pet.dart';
+import 'package:adoptini/modules/user.dart';
+import 'package:adoptini/providers/ownerProvider.dart';
+import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/services/firestore.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:adoptini/widgets/AddressTextWidget.dart';
+import 'package:adoptini/widgets/ownerWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class DetailsPage extends StatefulWidget {
   final Pet pet;
@@ -20,6 +24,12 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final _db = Database();
@@ -91,56 +101,9 @@ class _DetailsPageState extends State<DetailsPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          const CircleAvatar(
-                            radius: 22.0,
-                            // backgroundImage: AssetImage('assets/images/me.jpg'),
-                          ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text(
-                                      'john doe',
-                                      style: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    const Text(
-                                      'Feb 3, 2023',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 8.0,
-                                ),
-                                const Text(
-                                  'Owner',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                      ChangeNotifierProvider(
+                        create: (context) => OwnerProvider(widget.pet.ownerId),
+                        child: OwnerWidget(),
                       ),
                       const SizedBox(
                         height: 20.0,
@@ -289,13 +252,10 @@ class _DetailsPageState extends State<DetailsPage> {
                         const SizedBox(
                           width: 6.0,
                         ),
-                        Text(
-                          'Address',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w400,
-                          ),
+                        ChangeNotifierProvider(
+                          create: (context) =>
+                              OwnerProvider(widget.pet.ownerId),
+                          child: AddressTextWidget(),
                         ),
                       ],
                     ),

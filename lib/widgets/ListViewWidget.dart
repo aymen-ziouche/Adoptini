@@ -1,8 +1,8 @@
+import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/screens/detailspage.dart';
 import 'package:adoptini/widgets/listItemWidget.dart';
 import 'package:flutter/material.dart';
-
-
+import 'package:provider/provider.dart';
 
 class ListViewWidget extends StatelessWidget {
   final provider;
@@ -28,8 +28,11 @@ class ListViewWidget extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsPage(
-                    pet: pet,
+                  builder: (context) => ChangeNotifierProvider(
+                    create: (_) => PetsProvider(),
+                    child: DetailsPage(
+                      pet: pet,
+                    ),
                   ),
                 ),
               );

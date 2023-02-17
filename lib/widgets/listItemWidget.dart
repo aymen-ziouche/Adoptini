@@ -99,32 +99,6 @@ class ListItem extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      Row(
-                        children: const [
-                          Icon(
-                            FontAwesomeIcons.mapMarkerAlt,
-                            color: Colors.indigo,
-                            size: 16.0,
-                          ),
-                          SizedBox(
-                            width: 6.0,
-                          ),
-                          // Text(
-                          //   'Distance: ${pet.distanceToUser}',
-                          //   style: TextStyle(
-                          //     fontSize: 16.0,
-                          //     color:
-                          //         Theme.of(context)
-                          //             .primaryColor,
-                          //     fontWeight:
-                          //         FontWeight.w400,
-                          //   ),
-                          // ),
-                        ],
-                      ),
                     ],
                   ),
                 )

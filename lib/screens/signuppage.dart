@@ -80,8 +80,6 @@ class _SignupPageState extends State<SignupPage> {
                       Center(
                         child: InkWell(
                           onTap: () async {
-                            //Add image picker
-
                             final pickedFile = await ImagePicker().getImage(
                               source: ImageSource.gallery,
                             );
@@ -182,20 +180,35 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
                       const SizedBox(height: 16.0),
-                      Align(
-                        alignment: Alignment.center,
-                        child: InkWell(
-                          child: const Text(
-                            'Already have an account?',
-                            style: TextStyle(color: Colors.black),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Already have an account?",
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
                           ),
-                          onTap: () {
-                            Navigator.pushReplacementNamed(
-                                context, SigninPage.id);
-                          },
-                        ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          InkWell(
+                            child: const Text(
+                              'Login',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.indigo,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onTap: () {
+                              Navigator.pushReplacementNamed(
+                                  context, SigninPage.id);
+                            },
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 70.0),
+                      const SizedBox(height: 30.0),
                       MainButton(
                         text: "Register",
                         hasCircularBorder: true,

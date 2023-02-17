@@ -26,25 +26,17 @@ class _AddPetPageState extends State<AddPetPage> {
   final _auth = Auth();
 
   String _petGender = 'Male';
-
-  // List of items in our dropdown menu
   var genders = [
     'Male',
     'Female',
   ];
-
   String _petSize = 'Medium';
-
-  // List of items in our dropdown menu
   var sizes = [
     'Small',
     'Medium',
     'Large',
   ];
-
   String _petType = 'Dog';
-
-  // List of items in our dropdown menu
   var types = [
     'Dog',
     'Cat',

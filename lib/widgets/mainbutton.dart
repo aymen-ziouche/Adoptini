@@ -32,25 +32,5 @@ class MainButton extends StatelessWidget {
         ),
       ),
     );
-    // SizedBox(
-    //   width: double.infinity,
-    //   height: 50,
-    //   child:
-
-    //   // ElevatedButton(
-    //   //   onPressed: onTap,
-    //   //   style: ElevatedButton.styleFrom(
-    //   //     primary: Color(0xffFFD700),
-    //   //     shape: hasCircularBorder
-    //   //         ? RoundedRectangleBorder(
-    //   //             borderRadius: BorderRadius.circular(24.0),
-    //   //           )
-    //   //         : null,
-    //   //   ),
-    //   //   child: Text(
-    //   //     text,
-    //   //   ),
-    //   // ),
-    // );
   }
 }

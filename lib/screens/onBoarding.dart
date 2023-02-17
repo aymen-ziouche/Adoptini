@@ -13,8 +13,6 @@ class OnBoarding extends StatelessWidget {
     return OnBoardingSlider(
       headerBackgroundColor: Colors.transparent,
       finishButtonText: 'Get Started',
-      // give style to the finish button
-
       finishButtonColor: Colors.indigo,
       controllerColor: Colors.indigo,
       onFinish: () {

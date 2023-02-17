@@ -1,5 +1,6 @@
 import 'package:adoptini/screens/homepage.dart';
 import 'package:adoptini/screens/mainPage.dart';
+import 'package:adoptini/screens/signuppage.dart';
 import 'package:adoptini/services/auth.dart';
 import 'package:adoptini/widgets/mainbutton.dart';
 import 'package:flutter/material.dart';
@@ -125,7 +126,10 @@ class _SigninPageState extends State<SigninPage> {
                         child: InkWell(
                           child: const Text(
                             'Forgot your password?',
-                            style: TextStyle(color: Colors.black),
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
                           ),
                           onTap: () {},
                         ),
@@ -133,17 +137,6 @@ class _SigninPageState extends State<SigninPage> {
                       const SizedBox(
                         height: 32,
                       ),
-                      // Align(
-                      //   alignment: Alignment.topRight,
-                      //   child: InkWell(
-                      //     child: const Text(
-                      //       'Don\'t have an account? Register',
-                      //       style: TextStyle(color: Colors.black),
-                      //     ),
-                      //     onTap: () {},
-                      //   ),
-                      // ),
-                      const SizedBox(height: 95.0),
                       MainButton(
                         text: "Login",
                         hasCircularBorder: true,
@@ -168,6 +161,35 @@ class _SigninPageState extends State<SigninPage> {
                             }
                           }
                         },
+                      ),
+                      const SizedBox(height: 20.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Don't have an account?",
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          InkWell(
+                            child: const Text(
+                              'Register',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.indigo,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onTap: () {
+                              Navigator.pushReplacementNamed(
+                                  context, SignupPage.id);
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),

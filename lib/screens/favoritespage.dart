@@ -53,7 +53,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 child: Consumer<PetsProvider>(
                   builder: (context, provider, child) {
                     if (provider.pets.isEmpty) {
-                      return const Center(child: ShimmerWidget());
+                      return const Center(child: Text("No favorites found."));
                     }
                     return ListView.builder(
                       itemCount: provider.pets.length,
@@ -73,7 +73,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                   builder: (context) => ChangeNotifierProvider(
                                     create: (_) => PetsProvider(),
                                     child: DetailsPage(
-                                      // owner: context.read<PetsProvider>().fetchOwner(pet.ownerId),
                                       pet: pet,
                                     ),
                                   ),

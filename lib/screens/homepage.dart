@@ -1,5 +1,6 @@
 import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/providers/userProvider.dart';
+import 'package:adoptini/widgets/DrawerWidget.dart';
 import 'package:adoptini/widgets/ListViewWidget.dart';
 import 'package:adoptini/widgets/shimmerWidget.dart';
 import 'package:flutter/material.dart';
@@ -89,6 +90,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Consumer<UserProvider>(
+          builder: (context, provider, child) {
+            if (provider.user == null) {
+              return const Center(
+                  child: CircularProgressIndicator(
+                color: Colors.indigo,
+                strokeWidth: 5,
+              ));
+            }
+            return DrawerWidget(
+              provider: provider,
+            );
+          },
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -113,7 +130,11 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      const Icon(FontAwesomeIcons.bars),
+                      InkWell(
+                          onTap: () {
+                            Scaffold.of(context).openDrawer();
+                          },
+                          child: const Icon(FontAwesomeIcons.bars)),
                       Column(
                         children: <Widget>[
                           Text(
@@ -279,3 +300,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+

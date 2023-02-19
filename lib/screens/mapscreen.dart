@@ -1,12 +1,15 @@
-import 'dart:developer';
+import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+import 'package:adoptini/modules/pet.dart';
+import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/screens/detailspage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -48,7 +51,6 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   late GoogleMapController myController;
-
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
 
   void initMarker(specify, specifyId) async {

@@ -119,6 +119,7 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
           ),
+          behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.transparent,
           elevation: 0,
         );

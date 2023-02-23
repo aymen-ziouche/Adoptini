@@ -79,7 +79,8 @@ class MyApp extends StatelessWidget {
         SignupPage.id: (context) => SignupPage(),
         AddPetPage.id: (context) => const AddPetPage(),
         ProfilePage.id: (context) => ProfilePage(),
-        MapScreen.id: (context) => const MapScreen(),
+        MapScreen.id: (context) => ChangeNotifierProvider(
+            create: (_) => PetsProvider(), child: const MapScreen()),
         FavoritesPage.id: (context) => ChangeNotifierProvider(
             create: (_) => PetsProvider(), child: FavoritesPage()),
       },

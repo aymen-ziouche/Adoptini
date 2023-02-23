@@ -173,7 +173,7 @@ class _SigninPageState extends State<SigninPage> {
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           InkWell(

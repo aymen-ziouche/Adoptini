@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:adoptini/modules/pet.dart';
 import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/screens/detailspage.dart';
+import 'package:adoptini/widgets/listItemWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,6 +34,7 @@ class _MapScreenState extends State<MapScreen> {
     return GoogleMap(
       myLocationEnabled: true,
       myLocationButtonEnabled: true,
+      mapType: MapType.terrain,
       markers: Set<Marker>.of(markers.values),
       onMapCreated: (GoogleMapController controller) {
         myController = controller;
@@ -75,6 +77,56 @@ class _MapScreenState extends State<MapScreen> {
       infoWindow: InfoWindow(
         title: specify['petName'],
       ),
+      onTap: () {
+        final snackbar = SnackBar(
+          content: InkWell(
+            onTap: () {
+              Pet pet = Pet(
+                  longitude: specify['longitude'],
+                  latitude: specify['latitude'],
+                  favorites: specify['favorites'],
+                  ownerId: specify['ownerId'],
+                  petId: specify['petId'],
+                  type: specify['petType'],
+                  size: specify['petSize'],
+                  image: specify['petImage'],
+                  name: specify['petName'],
+                  breed: specify['petBreed'],
+                  gender: specify['petGender'],
+                  age: specify['petAge'],
+                  description: specify['petDescription']);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChangeNotifierProvider(
+                    create: (_) => PetsProvider(),
+                    child: DetailsPage(
+                      pet: pet,
+                    ),
+                  ),
+                ),
+              );
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            },
+            child: SizedBox(
+              height: 200,
+              width: double.infinity,
+              child: Expanded(
+                child: ListItem(
+                    imageUrl: specify['petImage'],
+                    name: specify['petName'],
+                    breed: specify['petBreed'],
+                    gender: specify['petGender'],
+                    age: specify['petAge'],
+                    description: specify['petDescription']),
+              ),
+            ),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      },
     );
     setState(() {
       markers[markerId] = marker;

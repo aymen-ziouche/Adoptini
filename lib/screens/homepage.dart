@@ -254,7 +254,12 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 } else {
                                   return const Center(
-                                      child: Text("No pets here"));
+                                      child: Text(
+                                    "No pets here",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  ));
                                 }
                               } else if (selectedAnimalIconIndex == 1) {
                                 if (provider.cats.isNotEmpty) {
@@ -263,7 +268,12 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 } else {
                                   return const Center(
-                                      child: Text("No pets here"));
+                                      child: Text(
+                                    "No pets here",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  ));
                                 }
                               } else if (selectedAnimalIconIndex == 2) {
                                 if (provider.birds.isNotEmpty) {
@@ -272,7 +282,12 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 } else {
                                   return const Center(
-                                      child: Text("No pets here"));
+                                      child: Text(
+                                    "No pets here",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  ));
                                 }
                               } else if (selectedAnimalIconIndex == 3) {
                                 if (provider.other.isNotEmpty) {
@@ -281,7 +296,12 @@ class _HomePageState extends State<HomePage> {
                                   );
                                 } else {
                                   return const Center(
-                                      child: Text("No pets here"));
+                                      child: Text(
+                                    "No pets here",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                    ),
+                                  ));
                                 }
                               }
                               return const Text('No Data');
@@ -300,5 +320,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-

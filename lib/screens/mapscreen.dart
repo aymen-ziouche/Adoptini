@@ -74,9 +74,6 @@ class _MapScreenState extends State<MapScreen> {
       icon: BitmapDescriptor.fromBytes(markerIcon),
       markerId: markerId,
       position: LatLng(specify['latitude'], specify['longitude']),
-      infoWindow: InfoWindow(
-        title: specify['petName'],
-      ),
       onTap: () {
         final snackbar = SnackBar(
           content: InkWell(

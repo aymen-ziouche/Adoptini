@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: const MainPage(),
       theme: ThemeData(
           primaryColor: Colors.indigo,
           inputDecorationTheme: InputDecorationTheme(
@@ -76,13 +76,13 @@ class MyApp extends StatelessWidget {
         HomePage.id: (context) => const HomePage(),
         OnBoarding.id: (context) => const OnBoarding(),
         SigninPage.id: (context) => const SigninPage(),
-        SignupPage.id: (context) => SignupPage(),
+        SignupPage.id: (context) => const SignupPage(),
         AddPetPage.id: (context) => const AddPetPage(),
         ProfilePage.id: (context) => ProfilePage(),
         MapScreen.id: (context) => ChangeNotifierProvider(
             create: (_) => PetsProvider(), child: const MapScreen()),
         FavoritesPage.id: (context) => ChangeNotifierProvider(
-            create: (_) => PetsProvider(), child: FavoritesPage()),
+            create: (_) => PetsProvider(), child: const FavoritesPage()),
       },
     );
   }

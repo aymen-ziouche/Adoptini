@@ -21,19 +21,19 @@ class _MainPageState extends State<MainPage> {
       case 0:
         setState(() {
           _bottomNavIndex = value;
-          _child = HomePage();
+          _child = const HomePage();
         });
         break;
       case 1:
         setState(() {
           _bottomNavIndex = value;
-          _child = MapScreen();
+          _child = const MapScreen();
         });
         break;
       case 2:
         setState(() {
           _bottomNavIndex = value;
-          _child = FavoritesPage();
+          _child = const FavoritesPage();
         });
         break;
       case 3:
@@ -48,7 +48,7 @@ class _MainPageState extends State<MainPage> {
   Widget _child = const HomePage();
 
   var iconList = <IconData>[
-    FontAwesomeIcons.home,
+    FontAwesomeIcons.house,
     FontAwesomeIcons.mapPin,
     FontAwesomeIcons.solidHeart,
     FontAwesomeIcons.solidUser,

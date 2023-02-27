@@ -1,12 +1,11 @@
 import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/screens/detailspage.dart';
 import 'package:adoptini/widgets/listItemWidget.dart';
-import 'package:adoptini/widgets/shimmerWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FavoritesPage extends StatefulWidget {
-  FavoritesPage({Key? key}) : super(key: key);
+  const FavoritesPage({Key? key}) : super(key: key);
   static String id = "FavoritesPage";
 
   @override

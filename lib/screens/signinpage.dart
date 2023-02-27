@@ -1,4 +1,3 @@
-import 'package:adoptini/screens/homepage.dart';
 import 'package:adoptini/screens/mainPage.dart';
 import 'package:adoptini/screens/signuppage.dart';
 import 'package:adoptini/services/auth.dart';
@@ -37,12 +36,12 @@ class _SigninPageState extends State<SigninPage> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    Color(0xff827397),
+                    const Color(0xff827397),
                     Theme.of(context).primaryColor,
                   ],
                 ),
                 color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(200),
                 ),
               ),
@@ -80,9 +79,6 @@ class _SigninPageState extends State<SigninPage> {
                         style: const TextStyle(
                           color: Colors.black,
                         ),
-                        onChanged: (value) {
-                          print(value);
-                        },
                         validator: (val) =>
                             val!.isEmpty ? 'Please enter your email!' : null,
                         decoration: const InputDecoration(
@@ -102,9 +98,7 @@ class _SigninPageState extends State<SigninPage> {
                         focusNode: _passwordFocusNode,
                         validator: (val) =>
                             val!.isEmpty ? 'Please enter your password!' : null,
-                        onChanged: (value) {
-                          print(value);
-                        },
+                        
                         obscureText: true,
                         style: const TextStyle(
                           color: Colors.black,
@@ -149,7 +143,6 @@ class _SigninPageState extends State<SigninPage> {
                                   _passwordController.text);
                               Navigator.pushReplacementNamed(
                                   context, MainPage.id);
-                              print(authresult.user!.uid);
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(

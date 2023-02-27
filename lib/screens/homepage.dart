@@ -121,10 +121,11 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, provider, child) {
                   if (provider.user == null) {
                     return const Center(
-                        child: CircularProgressIndicator(
-                      color: Colors.indigo,
-                      strokeWidth: 5,
-                    ));
+                      child: CircularProgressIndicator(
+                        color: Colors.indigo,
+                        strokeWidth: 5,
+                      ),
+                    );
                   }
                   return Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -201,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: const <Widget>[
                               Icon(
-                                FontAwesomeIcons.search,
+                                FontAwesomeIcons.magnifyingGlass,
                                 color: Colors.grey,
                               ),
                               Expanded(

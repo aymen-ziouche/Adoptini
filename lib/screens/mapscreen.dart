@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:adoptini/modules/pet.dart';
@@ -110,12 +109,13 @@ class _MapScreenState extends State<MapScreen> {
               width: double.infinity,
               child: Expanded(
                 child: ListItem(
-                    imageUrl: specify['petImage'],
-                    name: specify['petName'],
-                    breed: specify['petBreed'],
-                    gender: specify['petGender'],
-                    age: specify['petAge'],
-                    description: specify['petDescription']),
+                  imageUrl: specify['petImage'],
+                  name: specify['petName'],
+                  breed: specify['petBreed'],
+                  gender: specify['petGender'],
+                  age: specify['petAge'],
+                  description: specify['petDescription'],
+                ),
               ),
             ),
           ),

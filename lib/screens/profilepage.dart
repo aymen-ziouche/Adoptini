@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
         await _auth.logout();
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => OnBoarding()),
+          MaterialPageRoute(builder: (context) => const OnBoarding()),
           (Route<dynamic> route) => false,
         );
       } catch (e) {

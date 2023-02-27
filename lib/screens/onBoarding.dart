@@ -1,5 +1,3 @@
-import 'package:adoptini/screens/homepage.dart';
-import 'package:adoptini/screens/signinpage.dart';
 import 'package:adoptini/screens/signuppage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
@@ -42,15 +40,15 @@ class OnBoarding extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 400,
               width: 400,
               child: Image.asset('assets/logo3.jpg'),
             ),
-            SizedBox(height: 60),
-            Container(
+            const SizedBox(height: 60),
+            const SizedBox(
               width: 350,
-              child: const Text(
+              child: Text(
                 "Let's find your new pet",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -60,10 +58,10 @@ class OnBoarding extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            const SizedBox(
               width: 300,
-              child: const Text(
+              child: Text(
                 "Adoptini is a free platform that helps you find and post pets for adoption, all in one place.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -79,15 +77,15 @@ class OnBoarding extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 400,
               width: 400,
               child: Image.asset('assets/logo2.jpg'),
             ),
-            SizedBox(height: 60),
-            Container(
+            const SizedBox(height: 60),
+            const SizedBox(
               width: 350,
-              child: const Text(
+              child: Text(
                 "Find your new friends",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -97,10 +95,10 @@ class OnBoarding extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            const SizedBox(
               width: 300,
-              child: const Text(
+              child: Text(
                 "Make your life more happy with us by having little new friends",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -116,15 +114,15 @@ class OnBoarding extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 400,
               width: 400,
               child: Image.asset('assets/logo.jpg'),
             ),
-            SizedBox(height: 60),
-            Container(
+            const SizedBox(height: 60),
+            const SizedBox(
               width: 350,
-              child: const Text(
+              child: Text(
                 "Find your perfect pet",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -134,10 +132,10 @@ class OnBoarding extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
-            Container(
+            const SizedBox(height: 20),
+            const SizedBox(
               width: 300,
-              child: const Text(
+              child: Text(
                 "We have a wide variety of pets to choose from! You can filter by type, age, gender, or even by distance.",
                 textAlign: TextAlign.center,
                 style: TextStyle(

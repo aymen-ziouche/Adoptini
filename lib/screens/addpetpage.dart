@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:adoptini/screens/homepage.dart';
 import 'package:adoptini/services/auth.dart';
 import 'package:adoptini/services/firestore.dart';
 import 'package:adoptini/widgets/mainbutton.dart';
@@ -96,7 +94,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 TextFormField(
                   controller: _petName,
                   textInputAction: TextInputAction.next,
@@ -119,7 +117,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 TextFormField(
                   controller: _petDescription,
                   textInputAction: TextInputAction.next,
@@ -143,7 +141,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 TextFormField(
                   controller: _petBreed,
                   textInputAction: TextInputAction.next,
@@ -166,7 +164,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 TextFormField(
                   controller: _petAge,
                   keyboardType: TextInputType.number,
@@ -190,7 +188,7 @@ class _AddPetPageState extends State<AddPetPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 12.0),
+                const SizedBox(height: 12.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

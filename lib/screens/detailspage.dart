@@ -1,7 +1,5 @@
 import 'package:adoptini/modules/pet.dart';
-import 'package:adoptini/modules/user.dart';
 import 'package:adoptini/providers/ownerProvider.dart';
-import 'package:adoptini/providers/petProvider.dart';
 import 'package:adoptini/services/firestore.dart';
 import 'package:adoptini/widgets/AddressTextWidget.dart';
 import 'package:adoptini/widgets/ownerWidget.dart';
@@ -97,7 +95,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     children: <Widget>[
                       ChangeNotifierProvider(
                         create: (context) => OwnerProvider(widget.pet.ownerId),
-                        child: OwnerWidget(),
+                        child: const OwnerWidget(),
                       ),
                       const SizedBox(
                         height: 20.0,
@@ -249,7 +247,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         ChangeNotifierProvider(
                           create: (context) =>
                               OwnerProvider(widget.pet.ownerId),
-                          child: AddressTextWidget(),
+                          child: const AddressTextWidget(),
                         ),
                       ],
                     ),

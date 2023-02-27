@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:adoptini/modules/user.dart';
 import 'package:adoptini/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

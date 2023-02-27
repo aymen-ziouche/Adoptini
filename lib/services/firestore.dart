@@ -74,7 +74,6 @@ class Database {
               ))
           .toList();
     } catch (e) {
-      print(e);
       return [];
     }
   }
@@ -91,7 +90,6 @@ class Database {
       if (querySnapshot.docs.isNotEmpty) {
         var doc = querySnapshot.docs.first;
         petDocId = doc.reference.id;
-        print(petDocId);
       }
     });
 
@@ -124,7 +122,6 @@ class Database {
               ))
           .toList();
     } catch (e) {
-      print(e);
       return [];
     }
   }

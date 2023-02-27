@@ -21,7 +21,7 @@ class MainButton extends StatelessWidget {
         color: Theme.of(context).primaryColor,
         borderRadius: hasCircularBorder ? BorderRadius.circular(20) : null,
       ),
-      child: FlatButton(
+      child: TextButton(
         onPressed: onTap,
         child: Text(
           text,

@@ -1,8 +1,5 @@
 import 'package:adoptini/modules/pet.dart';
-import 'package:adoptini/modules/user.dart';
 import 'package:adoptini/services/firestore.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class PetsProvider extends ChangeNotifier {

@@ -59,6 +59,6 @@ class OwnerWidget extends StatelessWidget {
               )
             ],
           )
-        : Text('Loading owner...');
+        : const Text('Loading owner...');
   }
 }

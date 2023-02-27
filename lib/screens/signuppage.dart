@@ -1,16 +1,13 @@
 import 'dart:io';
-
-import 'package:adoptini/screens/homepage.dart';
 import 'package:adoptini/screens/mainPage.dart';
 import 'package:adoptini/screens/signinpage.dart';
 import 'package:adoptini/services/auth.dart';
 import 'package:adoptini/widgets/mainbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:geolocator/geolocator.dart';
 
 class SignupPage extends StatefulWidget {
-  SignupPage({Key? key}) : super(key: key);
+  const SignupPage({Key? key}) : super(key: key);
   static String id = "SignupPage";
 
   @override
@@ -80,7 +77,7 @@ class _SignupPageState extends State<SignupPage> {
                       Center(
                         child: InkWell(
                           onTap: () async {
-                            final pickedFile = await ImagePicker().getImage(
+                            final pickedFile = await ImagePicker().pickImage(
                               source: ImageSource.gallery,
                             );
                             if (pickedFile != null) {
@@ -113,9 +110,6 @@ class _SignupPageState extends State<SignupPage> {
                         style: const TextStyle(
                           color: Colors.black,
                         ),
-                        onChanged: (value) {
-                          print(value);
-                        },
                         validator: (val) =>
                             val!.isEmpty ? 'Please enter your name!' : null,
                         decoration: const InputDecoration(
@@ -139,9 +133,6 @@ class _SignupPageState extends State<SignupPage> {
                         style: const TextStyle(
                           color: Colors.black,
                         ),
-                        onChanged: (value) {
-                          print(value);
-                        },
                         validator: (val) =>
                             val!.isEmpty ? 'Please enter your email!' : null,
                         decoration: const InputDecoration(
@@ -161,9 +152,6 @@ class _SignupPageState extends State<SignupPage> {
                         focusNode: _passwordFocusNode,
                         validator: (val) =>
                             val!.isEmpty ? 'Please enter your password!' : null,
-                        onChanged: (value) {
-                          print(value);
-                        },
                         obscureText: true,
                         style: const TextStyle(
                           color: Colors.black,
@@ -190,7 +178,7 @@ class _SignupPageState extends State<SignupPage> {
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           InkWell(
@@ -224,7 +212,6 @@ class _SignupPageState extends State<SignupPage> {
                               );
                               Navigator.pushReplacementNamed(
                                   context, MainPage.id);
-                              print(authresult.user!.uid);
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(

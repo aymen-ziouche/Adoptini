@@ -31,7 +31,7 @@ class DrawerWidget extends StatelessWidget {
           },
         ),
         ListTile(
-          leading: Icon(
+          leading: const Icon(
             Icons.train,
           ),
           title: const Text('Another page'),

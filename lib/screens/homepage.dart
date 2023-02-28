@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                           Row(
                             children: [
                               const Icon(
-                                FontAwesomeIcons.mapMarkerAlt,
+                                FontAwesomeIcons.locationDot,
                                 color: Colors.indigo,
                               ),
                               Text(

@@ -100,12 +100,16 @@ class _DetailsPageState extends State<DetailsPage> {
                       const SizedBox(
                         height: 20.0,
                       ),
-                      Text(
-                        widget.pet.description,
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.0,
+                      Expanded(
+                        child: Text(
+                          widget.pet.description,
+                          maxLines: 4,
+                          overflow: TextOverflow.fade,
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.0,
+                          ),
                         ),
                       ),
                     ],
@@ -194,12 +198,16 @@ class _DetailsPageState extends State<DetailsPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: <Widget>[
-                        Text(
-                          widget.pet.name,
-                          style: TextStyle(
-                            fontSize: 26.0,
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: Text(
+                            widget.pet.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 26.0,
+                              color: Theme.of(context).primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         Icon(

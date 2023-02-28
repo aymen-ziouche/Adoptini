@@ -62,12 +62,16 @@ class ListItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            name,
-                            style: const TextStyle(
-                              fontSize: 26.0,
-                              color: Colors.indigo,
-                              fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: Text(
+                              name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 26.0,
+                                color: Colors.indigo,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           Icon(

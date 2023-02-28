@@ -101,14 +101,16 @@ class _DetailsPageState extends State<DetailsPage> {
                         height: 20.0,
                       ),
                       Expanded(
-                        child: Text(
-                          widget.pet.description,
-                          maxLines: 4,
-                          overflow: TextOverflow.fade,
-                          style: const TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.0,
+                        child: SingleChildScrollView(
+                          child: Text(
+                            widget.pet.description,
+                            maxLines: 4,
+                            overflow: TextOverflow.fade,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.0,
+                            ),
                           ),
                         ),
                       ),

@@ -1,6 +1,7 @@
 import 'package:adoptini/screens/addpetpage.dart';
 import 'package:adoptini/screens/favoritespage.dart';
 import 'package:adoptini/screens/homepage.dart';
+import 'package:adoptini/screens/homepage2.dart';
 import 'package:adoptini/screens/mapscreen.dart';
 import 'package:adoptini/screens/profilepage.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
@@ -21,7 +22,7 @@ class _MainPageState extends State<MainPage> {
       case 0:
         setState(() {
           _bottomNavIndex = value;
-          _child = const HomePage();
+          _child = const HomePage2();
         });
         break;
       case 1:
@@ -37,15 +38,16 @@ class _MainPageState extends State<MainPage> {
         });
         break;
       case 3:
-        setState(() {
-          _bottomNavIndex = value;
-          _child = ProfilePage();
-        });
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ProfilePage(),
+            ));
         break;
     }
   }
 
-  Widget _child = const HomePage();
+  Widget _child = const HomePage2();
 
   var iconList = <IconData>[
     FontAwesomeIcons.house,

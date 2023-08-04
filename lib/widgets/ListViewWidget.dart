@@ -14,37 +14,31 @@ class ListViewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      scrollDirection: Axis.vertical,
       itemCount: provider.length,
       itemBuilder: (BuildContext context, int index) {
         final pet = provider[index];
-        return Padding(
-          padding: const EdgeInsets.only(
-            bottom: 10.0,
-            right: 20.0,
-            left: 20.0,
-          ),
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChangeNotifierProvider(
-                    create: (_) => PetsProvider(),
-                    child: DetailsPage(
-                      pet: pet,
-                    ),
+        return InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChangeNotifierProvider(
+                  create: (_) => PetsProvider(),
+                  child: DetailsPage(
+                    pet: pet,
                   ),
                 ),
-              );
-            },
-            child: ListItem(
-                imageUrl: pet.image,
-                name: pet.name,
-                breed: pet.breed,
-                gender: pet.gender,
-                age: pet.age,
-                description: pet.description),
-          ),
+              ),
+            );
+          },
+          child: ListItem(
+              imageUrl: pet.image,
+              name: pet.name,
+              breed: pet.breed,
+              gender: pet.gender,
+              age: pet.age,
+              description: pet.description),
         );
       },
     );

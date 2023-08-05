@@ -43,15 +43,12 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage2()));
+                        Navigator.pop(
+                          context,
+                        );
                       },
                       icon: Image.asset('assets/images/arrow-right-box.png')),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('assets/images/Vector.png')),
+                  IconButton(onPressed: () {}, icon: Image.asset('assets/images/Vector.png')),
                 ],
               ),
             ),
@@ -81,9 +78,7 @@ class ProfilePage extends StatelessWidget {
                         'assets/images/profile-pic.png',
                       )),
                   Image.asset('assets/images/profile.png'),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Image.asset('assets/images/edit.png'))
+                  IconButton(onPressed: () {}, icon: Image.asset('assets/images/edit.png'))
                 ],
               ),
             ),

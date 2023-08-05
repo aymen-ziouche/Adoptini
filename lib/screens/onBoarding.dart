@@ -11,7 +11,15 @@ class OnBoarding extends StatelessWidget {
     return OnBoardingSlider(
       headerBackgroundColor: Colors.transparent,
       finishButtonText: 'Get Started',
-      finishButtonColor: Colors.indigo,
+      // finishButtonColor: Colors.indigo,
+      finishButtonStyle: const FinishButtonStyle(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(50.0),
+          ),
+        ),
+        backgroundColor: Colors.indigo,
+      ),
       controllerColor: Colors.indigo,
       onFinish: () {
         Navigator.pushReplacementNamed(context, SignupPage.id);

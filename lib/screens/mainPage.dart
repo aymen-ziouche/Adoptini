@@ -59,6 +59,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: _child,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.indigo,

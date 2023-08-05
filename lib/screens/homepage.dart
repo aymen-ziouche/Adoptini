@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
 
   int selectedAnimalIconIndex = 0;
 
-  Widget buildAnimalIcon(int index) {
+  Padding buildAnimalIcon(int index) {
     return Padding(
       padding: const EdgeInsets.only(right: 30.0),
       child: Column(
@@ -41,9 +41,7 @@ class _HomePageState extends State<HomePage> {
               });
             },
             child: Material(
-              color: selectedAnimalIconIndex == index
-                  ? Colors.indigo
-                  : Colors.white,
+              color: selectedAnimalIconIndex == index ? Colors.indigo : Colors.white,
               elevation: 8.0,
               borderRadius: BorderRadius.circular(20.0),
               child: Padding(
@@ -51,9 +49,7 @@ class _HomePageState extends State<HomePage> {
                 child: Icon(
                   animalIcons[index],
                   size: 30.0,
-                  color: selectedAnimalIconIndex == index
-                      ? Colors.white
-                      : Colors.indigo,
+                  color: selectedAnimalIconIndex == index ? Colors.white : Colors.indigo,
                 ),
               ),
             ),
@@ -90,6 +86,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       drawer: Drawer(
         child: Consumer<UserProvider>(
           builder: (context, provider, child) {
@@ -194,13 +191,12 @@ class _HomePageState extends State<HomePage> {
                           vertical: 20.0,
                         ),
                         child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20.0)),
+                          decoration:
+                              BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: const <Widget>[
+                            children: <Widget>[
                               Icon(
                                 FontAwesomeIcons.magnifyingGlass,
                                 color: Colors.grey,
@@ -214,11 +210,7 @@ class _HomePageState extends State<HomePage> {
                                       enabledBorder: InputBorder.none,
                                       errorBorder: InputBorder.none,
                                       disabledBorder: InputBorder.none,
-                                      contentPadding: EdgeInsets.only(
-                                          left: 15,
-                                          bottom: 11,
-                                          top: 11,
-                                          right: 15),
+                                      contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                                       hintText: 'Search pets to adopt'),
                                 ),
                               ),

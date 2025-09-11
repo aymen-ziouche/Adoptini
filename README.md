@@ -3,7 +3,6 @@
 This project is a platform for finding and adopting pets and posting your pets for adoption. Users can create profiles, search for pets, and post their own pets for adoption. The app also includes a messaging feature for users to communicate with each other.
 
 ## Table of Contents
-
     Installation
     Usage
     Contributing
